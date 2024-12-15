@@ -1,21 +1,17 @@
 "use client";
 
-import RegistrationFunction from "@/page/Register/RegisterForm/RegistationFunction";
+import RegistrationFunction from "@/components/RegistationFunction";
 import { useAddress } from "@thirdweb-dev/react";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const AdminLogin = () => {
   const wallet = useAddress();
   const router = useRouter();
-
   const handle = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-
-    console.log(email, password, wallet);
-
     try {
       const response = await signIn("credentials", {
         wallet: wallet,
@@ -73,14 +69,16 @@ const AdminLogin = () => {
                 required
               />
               <div className="flex justify-end text-xs">
-                <a href="#" className="hover:underline text-white">
+                <h2 href="#" className="hover:underline text-white">
                   Forgot Password?
-                </a>
+                </h2>
               </div>
             </div>
             <button
               disabled={!wallet}
-              className="rounded-md bg-blue-800 px-4 py-2 text-white transition-colors w-full"
+              className={` ${
+                wallet && "cursor-pointer hover:bg-blue-900"
+              } rounded-md bg-blue-800 px-4 py-2 text-white transition-colors w-full`}
             >
               Login
             </button>

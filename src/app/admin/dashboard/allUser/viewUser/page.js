@@ -24,8 +24,6 @@ const UserCard = ({ searchParams }) => {
     id,
   });
 
-  console.log(userCartsData);
-  console.log(userData);
 
   return (
     <div>

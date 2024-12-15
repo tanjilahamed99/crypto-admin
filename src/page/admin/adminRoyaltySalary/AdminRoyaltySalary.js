@@ -4,6 +4,7 @@ import React from "react";
 import useGetAllUsers from "@/hooks/useGetAllUsers/useGetAllUsers";
 import UpLine from "@/components/UpLine/UpLine";
 import SendRoyaltySalary from "./SendRoyaltySalary";
+import RegistrationFunction from "@/components/RegistationFunction";
 
 const AdminRoyaltySalary = () => {
   const { data: user } = useSession() || {};
@@ -27,7 +28,7 @@ const AdminRoyaltySalary = () => {
               <th className="whitespace-nowrap">Wallet</th>
               <th className="whitespace-nowrap">Up Line</th>
               <th className="whitespace-nowrap">Down Line</th>
-              <th className="whitespace-nowrap">View</th>
+              <th className="whitespace-nowrap">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -37,9 +38,7 @@ const AdminRoyaltySalary = () => {
                 <th className="whitespace-nowrap">
                   {item?._id?.slice(0, 5)}... {item?._id?.slice(19, 24)}
                 </th>
-                <th className="whitespace-nowrap">
-                  {item?.wallet?.slice(0, 7)}...{item?.wallet.slice(12, 20)}
-                </th>
+                <th className="whitespace-nowrap">{item?.wallet}</th>
                 <th className="whitespace-nowrap">
                   <UpLine id={item?._id} />
                 </th>
@@ -47,11 +46,7 @@ const AdminRoyaltySalary = () => {
                   <UpLine id={item?._id} />
                 </th>
                 <th className="whitespace-nowrap">
-                  <SendRoyaltySalary
-                    userId={item?._id}
-                    isEthPayment={true}
-                    price={"0.0003"}
-                  />
+                  <RegistrationFunction />
                 </th>
               </tr>
             ))}

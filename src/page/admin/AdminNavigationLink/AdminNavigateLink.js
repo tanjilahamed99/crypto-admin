@@ -18,6 +18,8 @@ import { FaCertificate } from "react-icons/fa";
 import { FaUserTag } from "react-icons/fa";
 import { SiFuturelearn } from "react-icons/si";
 import { BiWallet } from "react-icons/bi";
+import { AiOutlineDashboard } from "react-icons/ai";
+import { MdOutlineManageAccounts } from "react-icons/md";
 
 const AdminNavigateLink = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -28,7 +30,7 @@ const AdminNavigateLink = () => {
           href={"/admin/dashboard"}
           className="flex items-center text-md font-semibold gap-3"
         >
-          <FaUserClock className="text-2xl" /> Dashboard
+          <AiOutlineDashboard className="text-2xl" /> Dashboard
         </Link>
       </li>
       {/* new dropdown */}
@@ -142,7 +144,7 @@ const AdminNavigateLink = () => {
           href={"/admin/dashboard/royaltySalary"}
           className="flex items-center text-md font-semibold gap-3"
         >
-          <BiWallet  className="text-2xl" /> Royalty Salary
+          <BiWallet className="text-2xl" /> Royalty Salary
         </Link>
       </li>
       <li className="border border-gray-600  rounded-md hover:bg-gray-700 p-2">
@@ -159,6 +161,14 @@ const AdminNavigateLink = () => {
           className="flex items-center text-md font-semibold gap-3"
         >
           <GrGamepad className="text-2xl" /> Gaming NFT
+        </Link>
+      </li>
+      <li className="border border-gray-600  rounded-md hover:bg-gray-700 p-2">
+        <Link
+          href={"/admin/dashboard/manageUsers"}
+          className="flex items-center text-md font-semibold gap-3"
+        >
+          <MdOutlineManageAccounts className="text-2xl" /> Manage Users
         </Link>
       </li>
     </>

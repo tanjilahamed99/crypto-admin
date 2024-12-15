@@ -203,7 +203,6 @@ const GamingNft = () => {
               <th className="whitespace-nowrap">Title</th>
               <th className="whitespace-nowrap">Price</th>
               <th className="whitespace-nowrap">Quantity</th>
-              <th className="whitespace-nowrap">Remaining</th>
               <th className="whitespace-nowrap">Sell</th>
               <th className="whitespace-nowrap">Action</th>
               <th className="whitespace-nowrap">Action</th>
@@ -224,7 +223,6 @@ const GamingNft = () => {
                 <th className="whitespace-nowrap">{item?.title}</th>
                 <th className="whitespace-nowrap">{item?.price}</th>
                 <th className="whitespace-nowrap">{item?.quantity}</th>
-                <th className="whitespace-nowrap">{item?.remaining}</th>
                 <th className="whitespace-nowrap">{item?.sell}</th>
                 <th className="whitespace-nowrap">
                   <Link

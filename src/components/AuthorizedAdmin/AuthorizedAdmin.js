@@ -2,12 +2,11 @@
 
 import { useAddress } from "@thirdweb-dev/react";
 import { useSession } from "next-auth/react";
-import Footer from "../Footer/Footer";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const AuthorizedAdmin = ({ children }) => {
-  const { data: user, status } = useSession()|| {};
+  const { data: user, status } = useSession() || {};
   const wallet = useAddress();
   const router = useRouter();
 
@@ -37,7 +36,6 @@ const AuthorizedAdmin = ({ children }) => {
         )}
         {children}
       </div>
-      <Footer />
     </div>
   );
 };

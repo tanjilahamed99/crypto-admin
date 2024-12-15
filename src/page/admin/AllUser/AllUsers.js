@@ -35,7 +35,7 @@ const AllUsers = () => {
                 <th className="whitespace-nowrap">{item?.username}</th>
                 <th className="whitespace-nowrap">{item?.email}</th>
                 <th className="whitespace-nowrap">
-                  {item?.wallet?.slice(0, 7)}...{item?.wallet.slice(12, 20)}
+                  {item?.wallet?.slice(0, 7)}...{item?.wallet?.slice(12, 20)}
                 </th>
                 <th className="whitespace-nowrap">{item?.role}</th>
                 <th className="whitespace-nowrap">

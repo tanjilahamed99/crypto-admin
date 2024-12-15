@@ -1,8 +1,8 @@
 "use client";
 
+import TopEarnersCard from "@/components/TopEarnersCard";
 import { BASE_URL } from "@/constant/constant";
 import useGetWebsiteData from "@/hooks/useGetWebsiteData/userGetWebsiteData";
-import TopEarnersCard from "@/page/Home/TopEarners/TopEarnersCard";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useState } from "react";

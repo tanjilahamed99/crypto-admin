@@ -60,7 +60,7 @@ const SendRoyaltySalary = ({ isEthPayment, userId, price }) => {
             ];
           }
           if (websiteData?.totalRoyaltySalary?.length > 0) {
-            history = [
+            totalRoyaltySalary = [
               {
                 userId,
                 history: tx,
@@ -72,7 +72,7 @@ const SendRoyaltySalary = ({ isEthPayment, userId, price }) => {
               ...websiteData?.totalRoyaltySalary,
             ];
           } else {
-            history = [
+            totalRoyaltySalary = [
               {
                 userId,
                 history: tx,
@@ -85,7 +85,7 @@ const SendRoyaltySalary = ({ isEthPayment, userId, price }) => {
           }
           const mainHistory = {
             totalWithdrawal: history,
-            totalRoyaltySalary,
+            totalRoyaltySalary
           };
           const { data: historyData } = await axios.post(
             `${BASE_URL}/history`,

@@ -1,3 +1,0 @@
-.drawer-toggle:checked ~ .drawer-side .custom-backdrop-blur {
-    @apply backdrop-blur-md;
-  }

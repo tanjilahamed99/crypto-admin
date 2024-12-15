@@ -11,7 +11,7 @@ import {
 import { RxCross2 } from "react-icons/rx";
 import { IoHomeOutline } from "react-icons/io5";
 import "./admindrawer.css";
-import { MdQuestionAnswer } from "react-icons/md";
+import { MdOutlineManageAccounts, MdQuestionAnswer } from "react-icons/md";
 import { GrGamepad } from "react-icons/gr";
 import { MdOutlineMedicalInformation } from "react-icons/md";
 import { SlMenu } from "react-icons/sl";
@@ -21,6 +21,7 @@ import { IoWalletOutline } from "react-icons/io5";
 import { FaCertificate } from "react-icons/fa";
 import { SiFuturelearn } from "react-icons/si";
 import { BiWallet } from "react-icons/bi";
+import { AiOutlineDashboard } from "react-icons/ai";
 
 const AdminDrawer = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ const AdminDrawer = () => {
           href={"/admin/dashboard"}
           className="flex items-center text-md font-semibold gap-3"
         >
-          <FaUserClock className="text-2xl" /> Dashboard
+          <AiOutlineDashboard className="text-2xl" /> Dashboard
         </Link>
       </li>
       {/* new dropdown */}
@@ -184,6 +185,14 @@ const AdminDrawer = () => {
           className="flex items-center text-md font-semibold gap-3"
         >
           <GrGamepad className="text-2xl" /> Gaming NFT
+        </Link>
+      </li>
+      <li className="border border-gray-600  rounded-md hover:bg-gray-700 p-2">
+        <Link
+          href={"/admin/dashboard/manageUsers"}
+          className="flex items-center text-md font-semibold gap-3"
+        >
+          <MdOutlineManageAccounts className="text-2xl" /> Manage Users
         </Link>
       </li>
     </>
