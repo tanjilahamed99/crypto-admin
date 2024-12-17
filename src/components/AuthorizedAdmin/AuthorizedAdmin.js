@@ -9,7 +9,6 @@ const AuthorizedAdmin = ({ children }) => {
   const { data: user, status } = useSession() || {};
   const wallet = useAddress();
   const router = useRouter();
-
   if (status === "loading") {
     return (
       <span className="loading loading-spinner  loading-lg text-white bg-white h-[100vh] mx-auto flex justify-center"></span>

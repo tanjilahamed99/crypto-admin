@@ -42,8 +42,8 @@ const TopEarners = () => {
     if (data?.status) {
       document.getElementById("my_modal_1").close();
       Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
+        title: "success",
+        text: "Top Earner Added",
         icon: "success",
       });
       refetch();
@@ -79,6 +79,41 @@ const TopEarners = () => {
     }
   };
 
+  const deleteTopEarners = async (id) => {
+    let topEarners = websiteData?.topEarners?.filter(
+      (item) => item?.userId !== id
+    );
+    const mainData = {
+      topEarners,
+    };
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete this",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
+          const { data } = await axios.post(url, mainData);
+          if (data?.status) {
+            Swal.fire({
+              title: "Good job!",
+              text: "Deleted Completed",
+              icon: "success",
+            });
+            refetch();
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    });
+  };
+
   return (
     <div>
       {" "}
@@ -100,7 +135,7 @@ const TopEarners = () => {
               </button>
             </form>
           </div>
-          <form onSubmit={handleCreateLottery} className="text-white space-y-3">
+          <form onSubmit={handleCreateLottery} className="text-black space-y-3">
             <div>
               <h2 className="text-white font-semibold  mb-1">Name</h2>
               <input
@@ -189,7 +224,11 @@ const TopEarners = () => {
       </dialog>
       <div className="grid items-center gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {websiteData?.topEarners?.map((item, idx) => (
-          <TopEarnersCard data={item} key={idx} />
+          <TopEarnersCard
+            data={item}
+            key={idx}
+            handleDelete={deleteTopEarners}
+          />
         ))}
       </div>
     </div>

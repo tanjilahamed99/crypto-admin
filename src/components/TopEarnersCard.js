@@ -3,11 +3,11 @@ import { BiNetworkChart } from "react-icons/bi";
 import { BsPeopleFill } from "react-icons/bs";
 import { LuCircleDollarSign } from "react-icons/lu";
 
-const TopEarnersCard = ({ data }) => {
+const TopEarnersCard = ({ data, handleDelete }) => {
   return (
     <div className="bg-gray-500 bg-opacity-20 py-5">
       <Image
-        className="w-20 mx-auto"
+        className="w-20 h-20 mx-auto"
         src={data?.image || ""}
         alt="image not found"
         height={500}
@@ -41,6 +41,8 @@ const TopEarnersCard = ({ data }) => {
           </div>
           <h2 className="text-center text-white font-bold">Total Team</h2>
         </div>
+
+        <button className="bg-red-600 hover:bg-red-700 text-white px-5 rounded-md mx-auto flex py-2" onClick={() => handleDelete(data?.userId)}>Delete</button>
       </div>
     </div>
   );

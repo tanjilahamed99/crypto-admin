@@ -2,14 +2,19 @@
 
 import RegistrationFunction from "@/components/RegistationFunction";
 import { useAddress } from "@thirdweb-dev/react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const AdminLogin = () => {
   const wallet = useAddress();
   const router = useRouter();
+  const [error, setError] = useState();
+  const { data: user } = useSession();
+
   const handle = async (e) => {
     e.preventDefault();
+    setError("");
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
@@ -25,8 +30,10 @@ const AdminLogin = () => {
       }
     } catch (error) {
       console.error("Error logging in:", error);
+      setError(error?.message);
     }
   };
+
 
   return (
     <div className="flex items-center justify-center h-[100vh] bg-blue-800">
@@ -82,6 +89,8 @@ const AdminLogin = () => {
             >
               Login
             </button>
+
+            <h2 className="text-red-500 font-semibold text-sm">{error}</h2>
           </form>
         </div>
       </div>
