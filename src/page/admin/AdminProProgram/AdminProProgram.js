@@ -12,6 +12,8 @@ import { FaUser } from "react-icons/fa";
 import { MdDeleteSweep } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
+import useGetWebsiteData from "@/hooks/useGetWebsiteData/userGetWebsiteData";
 
 const AdminProProgram = () => {
   const { data: user } = useSession();
@@ -20,6 +22,9 @@ const AdminProProgram = () => {
     type: "power-matrix",
     programName: "millionaire",
   });
+
+  const [websiteData] = useGetWebsiteData();
+  console.log(websiteData?.websiteImage);
 
   const handleAddSlot = async (e) => {
     e.preventDefault();
@@ -113,6 +118,8 @@ const AdminProProgram = () => {
     }
   };
 
+  console.log(programs?.programs);
+
   return (
     <div>
       <h2 className="text-white text-2xl font-bold my-5">Pro Program</h2>
@@ -140,8 +147,14 @@ const AdminProProgram = () => {
                 key={idx}
               >
                 <div className="flex flex-col gap-5 justify-center">
-                  <div className="w-10 h-10 mx-auto flex justify-center items-center rounded-full text-white ring-2 font-bold ring-white">
-                    <p>{item?.order}</p>
+                  <div className="">
+                    <Image
+                      src={item?.image || websiteData?.websiteImage}
+                      alt="image not found"
+                      height={500}
+                      width={500}
+                      className="w-full h-32"
+                    />
                   </div>
                   <p className="flex items-center gap-2 font-semibold">
                     <LuCircleDollarSign className="text-primary text-2xl" />

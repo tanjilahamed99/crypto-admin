@@ -77,7 +77,7 @@ const EditProgram = ({ searchParams }) => {
       <h2 className="text-xl font-semibold mb-4 text-white">
         Update Pro Program
       </h2>
-      <form onSubmit={handleUpdate} className="text-white space-y-3">
+      <form onSubmit={handleUpdate} className="text-black space-y-3">
         <div>
           <h2 className="text-white font-semibold  mb-1">Title</h2>
           <input
