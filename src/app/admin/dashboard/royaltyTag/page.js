@@ -92,7 +92,6 @@ const RoyaltyTag = () => {
         const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
         const { data } = await axios.post(url, royaltyTagData);
         if (data?.status) {
-          document.getElementById("my_modal_1").close();
           Swal.fire({
             title: "Deleted",
             text: "Deleted Completed",

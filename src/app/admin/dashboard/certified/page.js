@@ -72,6 +72,38 @@ const Certified = () => {
       console.error("Error uploading image:", error);
     }
   };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const certified = websiteData?.certified?.filter(
+          (item) => item?.name !== id
+        );
+        const mainData = {
+          certified,
+        };
+        const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
+        const { data } = await axios.post(url, mainData);
+        if (data?.status) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Deleted Completed",
+            icon: "success",
+          });
+          refetch();
+        }
+      }
+    });
+  };
+
   return (
     <div>
       {" "}
@@ -141,19 +173,25 @@ const Certified = () => {
           </form>
         </div>
       </dialog>
-      <div className="grid items-center gap-5 grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+      <div className="grid items-center gap-10 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
         {websiteData?.certified?.map((item, idx) => (
-          <div key={idx}>
+          <div className="space-y-3" key={idx}>
             <Image
               alt="image not found"
               src={item?.image}
               height={500}
               width={500}
-              className="w-20 mx-auto mb-2"
+              className="w-40 h-40 mb-2"
             />
             <h2 className="text-white font-semibold text-center">
               {item?.name}
             </h2>
+            <button
+              onClick={() => handleDelete(item?.name)}
+              className="text-white bg-red-500 hover:bg-red-700 rounded-md px-4 py-1"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
