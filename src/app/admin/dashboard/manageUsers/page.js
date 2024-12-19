@@ -19,6 +19,7 @@ const ManageUsers = () => {
     adminEmail: user?.user?.email,
     wallet: user?.user?.wallet,
   });
+
   const [seen, setSeen] = useState(false);
   const date = Date();
   const [error, setError] = useState("");
@@ -129,11 +130,13 @@ const ManageUsers = () => {
                 <th className="whitespace-nowrap">{item?.username}</th>
                 <th className="whitespace-nowrap">{item?.email}</th>
                 <th className="whitespace-nowrap">
-                  {item?.wallet?.slice(0, 7)}...{item?.wallet.slice(12, 20)}
+                  {item?.wallet}
                 </th>
                 <th className="whitespace-nowrap">{item?.role}</th>
                 <th className="whitespace-nowrap">
-                  <Link href={`/admin/dashboard/manageUsers/updateAdmin?id=${item?._id}`}>
+                  <Link
+                    href={`/admin/dashboard/manageUsers/updateAdmin?id=${item?._id}`}
+                  >
                     <button>
                       <MdOutlineModeEdit className="text-green-700 text-3xl" />
                     </button>
