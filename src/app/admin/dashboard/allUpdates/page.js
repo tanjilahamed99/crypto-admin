@@ -72,6 +72,36 @@ const AdminAllUpdates = () => {
     }
   };
 
+  const deleteUpdate = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await axios.delete(
+            `${BASE_URL}/admin/deleteUpdate/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/${id}`
+          );
+          if (data?.result?.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted",
+              text: "Delete completed",
+              icon: "success",
+            });
+            refetch();
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    });
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center px-2">
@@ -96,7 +126,7 @@ const AdminAllUpdates = () => {
               </button>
             </form>
           </div>
-          <form onSubmit={handleCreateUpdate} className="text-white space-y-3 ">
+          <form onSubmit={handleCreateUpdate} className="text-black space-y-3 ">
             <div>
               <h2 className="text-white font-semibold  mb-1">Title</h2>
               <input
@@ -110,7 +140,7 @@ const AdminAllUpdates = () => {
             <div>
               <h2 className="text-white font-semibold  mb-1">Description</h2>
               <textarea
-                className="textarea textarea-bordered w-full text-white"
+                className="textarea textarea-bordered w-full"
                 placeholder="Bio"
                 name="desc"
               ></textarea>
@@ -154,18 +184,34 @@ const AdminAllUpdates = () => {
 
       <div className="space-y-3">
         {allUpdates?.updates?.map((item, idx) => (
-          <div key={idx} className="border border-gray-600 p-3 rounded-md">
+          <div
+            key={idx}
+            className="border border-gray-600 p-3 rounded-md space-y-3"
+          >
             {item?.image && (
               <Image
                 src={item?.image}
                 alt="image not found"
                 height={200}
                 width={200}
+                className="w-40 h-40"
               />
             )}
 
-            <h2 className="text-xl font-bold text-white">{item?.title}</h2>
-            <h2>{item?.description}</h2>
+            <div className="md:flex items-start  justify-between">
+              <h2 className="text-xl font-bold text-white">{item?.title}</h2>
+              <h2 className="text-sm font-bold text-white">
+                Date: {item?.date?.slice(0, 16)}
+              </h2>
+            </div>
+            <h2 className="text-white">{item?.description}</h2>
+
+            <button
+              onClick={() => deleteUpdate(item?._id)}
+              className="bg-red-500 text-white hover:bg-red-600 px-4 py-1 rounded-md"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
