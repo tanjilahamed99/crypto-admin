@@ -1,12 +1,48 @@
 "use client";
+import { BASE_URL } from "@/constant/constant";
 import useGetWebsiteData from "@/hooks/useGetWebsiteData/userGetWebsiteData";
 import SaveFaq from "@/page/admin/SaveFaq/SaveFaq";
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const Faq = () => {
   const [websiteData, refetch] = useGetWebsiteData();
   const [isOpen, setIsOpen] = useState(false);
+  const { data: user } = useSession();
+
+  const handleDelete = async (title) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to Delete",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const existData = websiteData?.faq?.filter(
+            (item) => item?.question !== title
+          );
+          console.log(existData);
+          const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/faq`;
+          const mainData = [...existData];
+          const { data } = await axios.post(url, mainData);
+          if (data?.status) {
+            setIsOpen(false);
+            refetch();
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    });
+  };
+
   return (
     <div className="mt-2 border-gray-700 border p-5">
       <h2 className="text-white text-2xl font-bold mb-2">Faq</h2>
@@ -25,7 +61,10 @@ const Faq = () => {
               <div className="collapse-content">
                 <p>{item.answer}</p>
               </div>
-              <MdDeleteForever className="text-white  absolute text-xl right-10 top-5 cursor-pointer" />
+              <MdDeleteForever
+                onClick={() => handleDelete(item?.question)}
+                className="text-white  absolute text-xl right-10 top-5 cursor-pointer"
+              />
             </div>
           ))}
         </>

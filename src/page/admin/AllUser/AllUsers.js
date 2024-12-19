@@ -45,7 +45,6 @@ const AllUsers = () => {
     });
   };
   const handleBlock = (id) => {
-    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You want to block him",
