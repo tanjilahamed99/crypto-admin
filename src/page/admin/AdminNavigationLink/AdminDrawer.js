@@ -189,6 +189,7 @@ const AdminDrawer = () => {
       </li>
       <li className="border border-gray-600  rounded-md hover:bg-gray-700 p-2">
         <Link
+          onClick={closeDrawer}
           href={"/admin/dashboard/manageUsers"}
           className="flex items-center text-md font-semibold gap-3"
         >

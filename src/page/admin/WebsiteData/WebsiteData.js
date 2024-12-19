@@ -20,6 +20,7 @@ const WebsiteData = () => {
     const whatsup = form.whatsup.value;
     const facebook = form.facebook.value;
     const twitter = form.twitter.value;
+    const support = form.support.value;
 
     const mainData = {
       websiteName,
@@ -31,6 +32,7 @@ const WebsiteData = () => {
       whatsup,
       facebook,
       twitter,
+      support,
     };
 
     const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
@@ -94,6 +96,16 @@ const WebsiteData = () => {
           <div>
             <h2 className="text-white text-xl font-bold mb-2">Social</h2>
             <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-white font-semibold mb-1">Support</h3>
+                <input
+                  type="text"
+                  placeholder="telegram link"
+                  className="input input-bordered w-full "
+                  name="support"
+                  defaultValue={websiteData?.support}
+                />
+              </div>
               <div>
                 <h3 className="text-white font-semibold mb-1">Telegram</h3>
                 <input
