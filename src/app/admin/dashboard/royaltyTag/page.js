@@ -74,6 +74,36 @@ const RoyaltyTag = () => {
     }
   };
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        let royaltyTag = websiteData?.royaltyTag?.filter((item) => item !== id);
+        const royaltyTagData = {
+          royaltyTag,
+        };
+        const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
+        const { data } = await axios.post(url, royaltyTagData);
+        if (data?.status) {
+          document.getElementById("my_modal_1").close();
+          Swal.fire({
+            title: "Deleted",
+            text: "Deleted Completed",
+            icon: "success",
+          });
+          refetch();
+        }
+      }
+    });
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center px-2">
@@ -141,13 +171,20 @@ const RoyaltyTag = () => {
             className="text-white mx-auto border border-gray-700 p-2 md:p-5 rounded-md"
             key={idx}
           >
-            <div className="whitespace-nowrap">
+            <div className="whitespace-nowrap space-y-3">
               <Image
                 alt="'image not found"
                 height={200}
                 width={200}
                 src={item}
+                className="h-40 w-40"
               />
+              <button
+                onClick={() => handleDelete(item)}
+                className="text-white bg-red-500 hover:bg-red-700 rounded-md px-4 py-1"
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}

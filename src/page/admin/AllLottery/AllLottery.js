@@ -38,8 +38,6 @@ const AllLottery = () => {
       sell: 0,
     };
 
-    console.log(lotteryData);
-
     const url = `${BASE_URL}/admin/lottery/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}`;
 
     const { data } = await axios.post(url, lotteryData);
@@ -57,7 +55,6 @@ const AllLottery = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
