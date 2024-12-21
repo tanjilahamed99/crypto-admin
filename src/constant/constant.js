@@ -1,2 +1,2 @@
-// export const BASE_URL = "http://localhost:5000/api";
-export const BASE_URL = "https://crypto-backend-nu.vercel.app/api";
+export const BASE_URL = "http://localhost:5000/api";
+// export const BASE_URL = "https://crypto-bakend.vercel.app/api";

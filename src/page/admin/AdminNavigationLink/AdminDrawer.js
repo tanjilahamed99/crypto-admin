@@ -22,6 +22,7 @@ import { FaCertificate } from "react-icons/fa";
 import { SiFuturelearn } from "react-icons/si";
 import { BiWallet } from "react-icons/bi";
 import { AiOutlineDashboard } from "react-icons/ai";
+import { PiTrademarkRegisteredLight } from "react-icons/pi";
 
 const AdminDrawer = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -129,6 +130,15 @@ const AdminDrawer = () => {
               className="flex items-center text-md font-semibold gap-3"
             >
               <IoWalletOutline className="text-2xl" /> Wallets
+            </Link>
+          </li>
+          <li className="border border-gray-600  rounded-md hover:bg-gray-800 p-2">
+            <Link
+              onClick={closeDrawer}
+              href={"/admin/dashboard/registerInfo "}
+              className="flex items-center text-md font-semibold gap-3"
+            >
+              <PiTrademarkRegisteredLight className="text-2xl" /> Register Info
             </Link>
           </li>
         </ul>

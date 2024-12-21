@@ -20,6 +20,7 @@ import { SiFuturelearn } from "react-icons/si";
 import { BiWallet } from "react-icons/bi";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { MdOutlineManageAccounts } from "react-icons/md";
+import { PiTrademarkRegisteredLight } from "react-icons/pi";
 
 const AdminNavigateLink = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -111,6 +112,14 @@ const AdminNavigateLink = () => {
               className="flex items-center text-md font-semibold gap-3"
             >
               <IoWalletOutline className="text-2xl" /> Wallets
+            </Link>
+          </li>
+          <li className="border border-gray-600  rounded-md hover:bg-gray-800 p-2">
+            <Link
+              href={"/admin/dashboard/registerInfo "}
+              className="flex items-center text-md font-semibold gap-3"
+            >
+              <PiTrademarkRegisteredLight className="text-2xl" /> Register Info
             </Link>
           </li>
         </ul>

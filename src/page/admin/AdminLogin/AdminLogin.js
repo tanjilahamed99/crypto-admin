@@ -2,7 +2,7 @@
 
 import RegistrationFunction from "@/components/RegistationFunction";
 import { useAddress } from "@thirdweb-dev/react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -34,9 +34,6 @@ const AdminLogin = () => {
 
   return (
     <div className="flex items-center justify-center h-[100vh] bg-blue-800">
-      <h2 onClick={() => signOut()} className="btn">
-        Logout
-      </h2>
       <div className="mx-auto w-[90%] md:w-full max-w-md space-y-5 rounded-lg border text-white p-2 md:p-7 shadow-lg dark:border-zinc-700 dark:bg-zinc-900 bg-blue-600">
         <h1 className=" text-xl md:text-3xl font-semibold tracking-tight text-white">
           Welcome to Istimate Pro
