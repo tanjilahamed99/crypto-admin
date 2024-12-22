@@ -173,7 +173,7 @@ const ManageUsers = () => {
                 name="name"
                 placeholder="Ex: Jack"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
@@ -182,7 +182,7 @@ const ManageUsers = () => {
                 name="email"
                 placeholder="Ex: example@gmail.com"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
                 type="email"
               />
             </div>
@@ -192,7 +192,7 @@ const ManageUsers = () => {
                 name="wallet"
                 placeholder="Ex: ox349"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div className="relative">
@@ -202,7 +202,7 @@ const ManageUsers = () => {
                 name="password"
                 placeholder="Ex: password"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
               <div className="absolute  text-xl right-3 top-10">
                 {seen ? (

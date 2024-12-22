@@ -50,7 +50,7 @@ const Wallets = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-black bg-white"
                 name="lottery"
                 defaultValue={websiteData?.wallets?.lottery}
               />
@@ -62,7 +62,7 @@ const Wallets = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-black bg-white"
                 name="proProgram"
                 defaultValue={websiteData?.wallets?.proProgram}
               />
@@ -74,7 +74,7 @@ const Wallets = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-black bg-white"
                 name="royaltySalary"
                 defaultValue={websiteData?.wallets?.royaltySalary}
               />

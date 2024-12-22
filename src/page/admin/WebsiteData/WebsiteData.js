@@ -68,7 +68,7 @@ const WebsiteData = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white text-black"
                 name="webName"
                 defaultValue={websiteData?.websiteName}
               />
@@ -78,7 +78,7 @@ const WebsiteData = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-white text-black"
                 name="webImage"
                 defaultValue={websiteData?.websiteImage}
               />
@@ -86,7 +86,7 @@ const WebsiteData = () => {
             <div className="col-span-2 w-full">
               <h3 className="text-white font-semibold mb-1">About</h3>
               <textarea
-                className="textarea textarea-bordered w-full"
+                className="textarea textarea-bordered w-full text-black bg-white"
                 placeholder="About"
                 name="description"
                 defaultValue={websiteData?.description}
@@ -101,7 +101,7 @@ const WebsiteData = () => {
                 <input
                   type="text"
                   placeholder="telegram link"
-                  className="input input-bordered w-full "
+                  className="input input-bordered w-full bg-white text-black "
                   name="support"
                   defaultValue={websiteData?.support}
                 />
@@ -111,7 +111,7 @@ const WebsiteData = () => {
                 <input
                   type="text"
                   placeholder="telegram link"
-                  className="input input-bordered w-full "
+                  className="input input-bordered w-full bg-white text-black "
                   name="telegram"
                   defaultValue={websiteData?.telegram}
                 />
@@ -121,7 +121,7 @@ const WebsiteData = () => {
                 <input
                   type="text"
                   placeholder="Youtube link"
-                  className="input input-bordered w-full "
+                  className="input input-bordered w-full bg-white text-black "
                   name="youtube"
                   defaultValue={websiteData?.youtube}
                 />
@@ -131,7 +131,7 @@ const WebsiteData = () => {
                 <input
                   type="text"
                   placeholder="instragram link"
-                  className="input input-bordered w-full "
+                  className="input input-bordered w-full bg-white text-black "
                   name="instagram"
                   defaultValue={websiteData?.instagram}
                 />
@@ -141,7 +141,7 @@ const WebsiteData = () => {
                 <input
                   type="text"
                   placeholder="Whatsup link"
-                  className="input input-bordered w-full "
+                  className="input input-bordered w-full bg-white text-black "
                   name="whatsup"
                   defaultValue={websiteData?.whatsup}
                 />
@@ -151,7 +151,7 @@ const WebsiteData = () => {
                 <input
                   type="text"
                   placeholder="Facebook link"
-                  className="input input-bordered w-full "
+                  className="input input-bordered w-full bg-white text-black "
                   name="facebook"
                   defaultValue={websiteData?.facebook}
                 />
@@ -161,7 +161,7 @@ const WebsiteData = () => {
                 <input
                   type="text"
                   placeholder="twitter link"
-                  className="input input-bordered w-full "
+                  className="input input-bordered w-full bg-white text-black "
                   name="twitter"
                   defaultValue={websiteData?.twitter}
                 />

@@ -108,7 +108,7 @@ const AdminAllUpdates = () => {
         <h2 className="text-white text-2xl font-bold my-5">All Updates</h2>
         <button
           onClick={() => document.getElementById("my_modal_1").showModal()}
-          className="bg-primary font-semibold border-none h-8 w-28 text-white hover:bg-[#f2a74b] rounded-lg"
+          className="bg-primary font-semibold border-none h-8 w-28 text-white hover:bg-[#f2a74b] rounded-lg text-sm"
         >
           Add Updates
         </button>
@@ -134,13 +134,13 @@ const AdminAllUpdates = () => {
                 name="title"
                 placeholder="Ex: Title"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
               <h2 className="text-white font-semibold  mb-1">Description</h2>
               <textarea
-                className="textarea textarea-bordered w-full"
+                className="textarea textarea-bordered w-full text-black bg-white"
                 placeholder="Bio"
                 name="desc"
               ></textarea>
@@ -152,7 +152,7 @@ const AdminAllUpdates = () => {
                   name="image"
                   type="text"
                   placeholder="Ex: http.."
-                  className="w-full pl-2 py-2  rounded-md"
+                  className="w-full pl-2 py-2  rounded-md text-black bg-white"
                   defaultValue={lotteryImg}
                 />
                 <div>
@@ -166,7 +166,7 @@ const AdminAllUpdates = () => {
                   </label>
                   <input
                     onChange={handleImageUpload}
-                    className="hidden"
+                    className="hidden "
                     type="file"
                     name=""
                     id="type3-2"
@@ -175,7 +175,7 @@ const AdminAllUpdates = () => {
               </div>
             </div>
 
-            <button className="bg-primary font-semibold border-none h-10 w-28 text-white hover:bg-[#f2a74b] rounded-lg">
+            <button className="bg-primary font-semibold text-sm border-none h-10 w-28 text-white hover:bg-[#f2a74b] rounded-lg">
               Create
             </button>
           </form>

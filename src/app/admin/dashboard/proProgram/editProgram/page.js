@@ -84,7 +84,7 @@ const EditProgram = ({ searchParams }) => {
             name="title"
             placeholder="Ex: title"
             required
-            className="w-full pl-2 py-2 rounded-md"
+            className="w-full pl-2 py-2 rounded-md text-black bg-white"
             defaultValue={program?.program?.title}
           />
         </div>
@@ -94,7 +94,7 @@ const EditProgram = ({ searchParams }) => {
             name="price"
             placeholder="Ex: Price"
             required
-            className="w-full pl-2 py-2 rounded-md"
+            className="w-full pl-2 py-2 rounded-md text-black bg-white"
             defaultValue={program?.program?.price}
           />
         </div>
@@ -106,7 +106,7 @@ const EditProgram = ({ searchParams }) => {
               type="text"
               placeholder="Ex: http.."
               required
-              className="w-full pl-2 py-2  rounded-md"
+              className="w-full pl-2 py-2  rounded-md text-black bg-white"
               defaultValue={lotteryImg}
             />
             <div>

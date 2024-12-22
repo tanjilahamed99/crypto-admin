@@ -67,7 +67,7 @@ const UpdateAdminInfo = ({ searchParams }) => {
             name="name"
             placeholder="Ex: Jack"
             required
-            className="w-full pl-2 py-2 rounded-md"
+            className="w-full pl-2 py-2 rounded-md text-black bg-white"
             defaultValue={userData?.userData?.username}
           />
         </div>
@@ -77,7 +77,7 @@ const UpdateAdminInfo = ({ searchParams }) => {
             name="email"
             placeholder="Ex: example@gmail.com"
             required
-            className="w-full pl-2 py-2 rounded-md"
+            className="w-full pl-2 py-2 rounded-md text-black bg-white"
             defaultValue={userData?.userData?.email}
             type="email"
           />
@@ -88,7 +88,7 @@ const UpdateAdminInfo = ({ searchParams }) => {
             name="picture"
             placeholder="Ex: example@gmail.com"
             required
-            className="w-full pl-2 py-2 rounded-md"
+            className="w-full pl-2 py-2 rounded-md text-black bg-white"
             defaultValue={userData?.userData?.picture}
           />
         </div>
@@ -98,7 +98,7 @@ const UpdateAdminInfo = ({ searchParams }) => {
             name="wallet"
             placeholder="Ex: ox349"
             required
-            className="w-full pl-2 py-2 rounded-md"
+            className="w-full pl-2 py-2 rounded-md text-black bg-white"
             defaultValue={userData?.userData?.wallet}
           />
         </div>
@@ -109,7 +109,7 @@ const UpdateAdminInfo = ({ searchParams }) => {
             name="password"
             placeholder="Ex: password"
             required
-            className="w-full pl-2 py-2 rounded-md"
+            className="w-full pl-2 py-2 rounded-md text-black bg-white"
             defaultValue={userData?.userData?.password}
           />
           <div className="absolute  text-xl right-3 top-10">

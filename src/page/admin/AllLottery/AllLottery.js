@@ -326,7 +326,7 @@ const AllLottery = () => {
                 name="title"
                 placeholder="Ex: Title"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
@@ -335,7 +335,7 @@ const AllLottery = () => {
                 name="price"
                 placeholder="Ex: Price"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
@@ -345,7 +345,7 @@ const AllLottery = () => {
                 name="quantity"
                 placeholder="Ex: quantity"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
@@ -356,7 +356,7 @@ const AllLottery = () => {
                   type="text"
                   placeholder="Ex: http.."
                   required
-                  className="w-full pl-2 py-2  rounded-md"
+                  className="w-full pl-2 py-2  rounded-md text-black bg-white"
                   defaultValue={lotteryImg}
                 />
                 <div>

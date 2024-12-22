@@ -197,7 +197,7 @@ const AdminProProgram = () => {
                     name="title"
                     placeholder="Ex: title"
                     required
-                    className="w-full pl-2 py-2 rounded-md"
+                    className="w-full pl-2 py-2 rounded-md text-black bg-white"
                   />
                 </div>
                 <div>
@@ -206,7 +206,7 @@ const AdminProProgram = () => {
                     name="price"
                     placeholder="Ex: Price"
                     required
-                    className="w-full pl-2 py-2 rounded-md"
+                    className="w-full pl-2 py-2 rounded-md text-black bg-white"
                   />
                 </div>
                 <div>
@@ -217,7 +217,7 @@ const AdminProProgram = () => {
                       type="text"
                       placeholder="Ex: http.."
                       required
-                      className="w-full pl-2 py-2  rounded-md"
+                      className="w-full pl-2 py-2  rounded-md text-black bg-white"
                       defaultValue={lotteryImg}
                     />
                     <div>

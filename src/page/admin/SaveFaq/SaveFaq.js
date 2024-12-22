@@ -30,7 +30,7 @@ const SaveFaq = ({ refetch, setIsOpen, faqData }) => {
         <input
           type="text"
           placeholder="question"
-          className="input input-bordered w-full "
+          className="input input-bordered w-full text-black bg-white"
           name="question"
           required
         />
@@ -40,7 +40,7 @@ const SaveFaq = ({ refetch, setIsOpen, faqData }) => {
         <input
           type="text"
           placeholder="Answer"
-          className="input input-bordered w-full "
+          className="input input-bordered w-full text-black bg-white"
           name="answer"
           required
         />

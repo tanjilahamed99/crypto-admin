@@ -134,7 +134,7 @@ const GamingNft = () => {
                 name="title"
                 placeholder="Ex: Title"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
@@ -144,7 +144,7 @@ const GamingNft = () => {
                 name="price"
                 placeholder="Ex: Price"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
@@ -154,7 +154,7 @@ const GamingNft = () => {
                 name="quantity"
                 placeholder="Ex: quantity"
                 required
-                className="w-full pl-2 py-2 rounded-md"
+                className="w-full pl-2 py-2 rounded-md text-black bg-white"
               />
             </div>
             <div>
@@ -165,7 +165,7 @@ const GamingNft = () => {
                   type="text"
                   placeholder="Ex: http.."
                   required
-                  className="w-full pl-2 py-2  rounded-md"
+                  className="w-full pl-2 py-2 rounded-md text-black bg-white"
                   defaultValue={lotteryImg}
                 />
                 <div>

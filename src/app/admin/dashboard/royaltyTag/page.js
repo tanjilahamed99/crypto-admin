@@ -134,7 +134,7 @@ const RoyaltyTag = () => {
                   type="text"
                   placeholder="Ex: http.."
                   required
-                  className="w-full pl-2 py-2  rounded-md"
+                  className="w-full pl-2 py-2  rounded-md text-black bg-white"
                   defaultValue={lotteryImg}
                 />
                 <div>

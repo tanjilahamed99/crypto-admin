@@ -32,7 +32,7 @@ const UploadImage = ({ setImg, name, img }) => {
         name={name}
         type="text"
         placeholder="Ex: http.."
-        className="w-full pl-2 py-2 rounded-md"
+        className="w-full pl-2 py-2 rounded-md text-black bg-white"
         value={img} // Make it a controlled input
         readOnly // Optional: if you want it to be read-only since it's auto-filled
       />
