@@ -1,11 +1,12 @@
 "use client";
+import RegistrationFunction from "@/components/RegistationFunction";
+import UpLine from "@/components/UpLine/UpLine";
+import useGetAllUsers from "@/hooks/useGetAllUsers/useGetAllUsers";
+import SendRefersPayment from "@/page/admin/ManageRefers/SendRefersPayment";
 import { useSession } from "next-auth/react";
 import React from "react";
-import useGetAllUsers from "@/hooks/useGetAllUsers/useGetAllUsers";
-import UpLine from "@/components/UpLine/UpLine";
-import RegistrationFunction from "@/components/RegistationFunction";
 
-const AdminRoyaltySalary = () => {
+const Refers = () => {
   const { data: user } = useSession() || {};
   const [allUsers, refetch] = useGetAllUsers({
     adminId: user?.user?._id,
@@ -15,6 +16,7 @@ const AdminRoyaltySalary = () => {
 
   return (
     <div>
+      <RegistrationFunction />
       <h2 className="text-white text-2xl font-bold my-5">Royalty Salary</h2>
 
       <div className="overflow-x-auto">
@@ -25,8 +27,9 @@ const AdminRoyaltySalary = () => {
               <th className="whitespace-nowrap">No.</th>
               <th className="whitespace-nowrap">UserId</th>
               <th className="whitespace-nowrap">Wallet</th>
-              <th className="whitespace-nowrap">Up Line</th>
-              <th className="whitespace-nowrap">Down Line</th>
+              <th className="whitespace-nowrap">Refers</th>
+              <th className="whitespace-nowrap">Reward Members</th>
+              <th className="whitespace-nowrap">Total Payment</th>
               <th className="whitespace-nowrap">Action</th>
             </tr>
           </thead>
@@ -42,10 +45,19 @@ const AdminRoyaltySalary = () => {
                   <UpLine id={item?._id} />
                 </th>
                 <th className="whitespace-nowrap">
-                  <UpLine id={item?._id} />
+                  {item?.refersReword?.members || 0}
                 </th>
                 <th className="whitespace-nowrap">
-                  <RegistrationFunction />
+                  {item?.refersReword?.totalPayment || 0}
+                </th>
+                <th className="whitespace-nowrap">
+                  <SendRefersPayment
+                    userId={item?._id}
+                    wallet={item?.wallet}
+                    given={item?.refersReword?.members}
+                    totalPay={item?.refersReword?.totalPayment}
+                    validate={refetch}
+                  />
                 </th>
               </tr>
             ))}
@@ -56,4 +68,4 @@ const AdminRoyaltySalary = () => {
   );
 };
 
-export default AdminRoyaltySalary;
+export default Refers;

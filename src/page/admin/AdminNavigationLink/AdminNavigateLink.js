@@ -199,7 +199,7 @@ const AdminNavigateLink = () => {
       </li>
       <li className="border border-gray-600  rounded-md hover:bg-gray-700 p-2">
         <Link
-          href={"/admin/dashboard/manageUsers"}
+          href={"/admin/dashboard/refers"}
           className="flex items-center text-md font-semibold gap-3"
         >
           <VscReferences className="text-2xl" /> Manage Refer

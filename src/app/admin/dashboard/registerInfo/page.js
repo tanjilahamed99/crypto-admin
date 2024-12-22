@@ -17,6 +17,7 @@ const RegisterInfo = () => {
     const form = e.target;
     const fee = form.fee.value;
     const wallet = form.wallet.value;
+    const referReward = form.referReward.value;
     const role1 = form.role1.value;
     const role2 = form.role2.value;
     const role3 = form.role3.value;
@@ -29,6 +30,7 @@ const RegisterInfo = () => {
         ruleTwo: role2,
         ruleThree: role3,
         ruleFour: role4,
+        referReward,
       },
     };
     const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
@@ -73,6 +75,16 @@ const RegisterInfo = () => {
                 className="input input-bordered w-full bg-white text-black"
                 name="wallet"
                 defaultValue={websiteData?.register?.wallet}
+              />
+            </div>
+            <div>
+              <h2 className="text-white font-semibold  mb-1">Refers Reward</h2>
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full bg-white text-black"
+                name="referReward"
+                defaultValue={websiteData?.register?.referReward}
               />
             </div>
           </div>
