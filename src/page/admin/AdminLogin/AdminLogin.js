@@ -23,8 +23,10 @@ const AdminLogin = () => {
         callbackUrl: "/admin/dashboard",
         redirect: false,
       });
-      if (response?.status) {
+      if (response?.status === 200) {
         router.push("/admin/dashboard");
+      } else {
+        setError(response?.error);
       }
     } catch (error) {
       console.error("Error logging in:", error);
@@ -87,7 +89,7 @@ const AdminLogin = () => {
               Login
             </button>
 
-            <h2 className="text-red-500 font-semibold text-sm">{error}</h2>
+            <h2 className="text-white font-semibold text-sm">{error}</h2>
           </form>
         </div>
       </div>
