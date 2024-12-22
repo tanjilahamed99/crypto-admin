@@ -12,8 +12,6 @@ const RegisterInfo = () => {
   const [websiteData, refetch] = useGetWebsiteData();
   const { data: user } = useSession();
 
-  console.log(websiteData);
-
   const handleSetNewData = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -33,12 +31,8 @@ const RegisterInfo = () => {
         ruleFour: role4,
       },
     };
-    console.log(mainData);
-
     const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
-
     const { data } = await axios.post(url, mainData);
-    console.log(data);
     if (data?.status) {
       refetch();
       Swal.fire({

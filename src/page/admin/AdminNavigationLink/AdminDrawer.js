@@ -23,6 +23,7 @@ import { SiFuturelearn } from "react-icons/si";
 import { BiWallet } from "react-icons/bi";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { PiTrademarkRegisteredLight } from "react-icons/pi";
+import { VscReferences } from "react-icons/vsc";
 
 const AdminDrawer = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -141,6 +142,22 @@ const AdminDrawer = () => {
               <PiTrademarkRegisteredLight className="text-2xl" /> Register Info
             </Link>
           </li>
+          <li className="border border-gray-600  rounded-md hover:bg-gray-800 p-2">
+            <Link
+              href={"/admin/dashboard/referImages "}
+              className="flex items-center text-md font-semibold gap-3"
+            >
+              <VscReferences className="text-2xl" /> Refer Images
+            </Link>
+          </li>
+          <li className="border border-gray-600  rounded-md hover:bg-gray-800 p-2">
+            <Link
+              href={"/admin/dashboard/lotteryImages "}
+              className="flex items-center text-md font-semibold gap-3"
+            >
+              <FaGift className="text-2xl" /> Lottery Images
+            </Link>
+          </li>
         </ul>
       </li>
       <li className="border border-gray-600  rounded-md hover:bg-gray-700 p-2">
@@ -204,6 +221,15 @@ const AdminDrawer = () => {
           className="flex items-center text-md font-semibold gap-3"
         >
           <MdOutlineManageAccounts className="text-2xl" /> Manage Users
+        </Link>
+      </li>
+      <li className="border border-gray-600  rounded-md hover:bg-gray-700 p-2">
+        <Link
+          onClick={closeDrawer}
+          href={"/admin/dashboard/manageUsers"}
+          className="flex items-center text-md font-semibold gap-3"
+        >
+          <VscReferences className="text-2xl" /> Manage Refer
         </Link>
       </li>
     </>

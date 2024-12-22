@@ -12,28 +12,16 @@ const AdminBanner = () => {
   const [websiteData, refetch] = useGetWebsiteData();
   const { data: user } = useSession();
   const [mainImg, setMainImg] = useState("");
-  const [smFirstImg, setSmFirstImg] = useState("");
-  const [smSecantImg, setSmSecantImg] = useState("");
-  const [smThirdImg, setSmThirdImg] = useState("");
-  const [smForthImg, setSmForthImg] = useState("");
-  const [bigFirstImg, setBigFirstImg] = useState("");
-  const [bigSecantImg, setBigSecantImg] = useState("");
-  const [bigThirdImg, setBigThirdImg] = useState("");
-  const [bigForthImg, setBigForthImg] = useState("");
+  const [roadMapImgOne, setRoadMapImgOne] = useState("");
+  const [roadMapImgTwo, setRoadMapImgTwo] = useState("");
 
   const handleSetNewData = async () => {
     const mainData = {
       banner: {
         mainImage: mainImg,
-        smFirstImg,
-        smSecantImg,
-        smThirdImg,
-        smForthImg,
-        bigFirstImg,
-        bigSecantImg,
-        bigThirdImg,
-        bigForthImg,
       },
+      roadMapImgOne,
+      roadMapImgTwo,
     };
     const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
 
@@ -53,29 +41,11 @@ const AdminBanner = () => {
     if (websiteData?.banner?.mainImage) {
       setMainImg(websiteData?.banner?.mainImage);
     }
-    if (websiteData?.banner?.smFirstImg) {
-      setSmFirstImg(websiteData?.banner?.smFirstImg);
+    if (websiteData?.roadMapImgOne) {
+      setRoadMapImgOne(websiteData?.roadMapImgOne);
     }
-    if (websiteData?.banner?.smSecantImg) {
-      setSmSecantImg(websiteData?.banner?.smSecantImg);
-    }
-    if (websiteData?.banner?.smThirdImg) {
-      setSmThirdImg(websiteData?.banner?.smThirdImg);
-    }
-    if (websiteData?.banner?.smForthImg) {
-      setSmForthImg(websiteData?.banner?.smForthImg);
-    }
-    if (websiteData?.banner?.bigFirstImg) {
-        setBigFirstImg(websiteData?.banner?.bigFirstImg);
-    }
-    if (websiteData?.banner?.bigSecantImg) {
-        setBigSecantImg(websiteData?.banner?.bigSecantImg);
-    }
-    if (websiteData?.banner?.bigThirdImg) {
-        setBigThirdImg(websiteData?.banner?.bigThirdImg);
-    }
-    if (websiteData?.banner?.bigForthImg) {
-        setBigForthImg(websiteData?.banner?.bigForthImg);
+    if (websiteData?.roadMapImgTwo) {
+      setRoadMapImgTwo(websiteData?.roadMapImgTwo);
     }
   }, [websiteData]);
 
@@ -93,85 +63,22 @@ const AdminBanner = () => {
             </div>
             <div>
               <h2 className="text-white font-semibold  mb-1">
-                Small Row First Image
+                Road Map Image-1
               </h2>
               <UploadImage
-                img={smFirstImg}
-                name={"smFirstImg"}
-                setImg={setSmFirstImg}
+                img={roadMapImgOne}
+                name={"roadMapImgOne"}
+                setImg={setRoadMapImgOne}
               />
             </div>
             <div>
               <h2 className="text-white font-semibold  mb-1">
-                {" "}
-                Small Row Secant Image
+                Road Map Image-2
               </h2>
               <UploadImage
-                img={smSecantImg}
-                name={"smSecantImg"}
-                setImg={setSmSecantImg}
-              />
-            </div>
-            <div>
-              <h2 className="text-white font-semibold  mb-1">
-                {" "}
-                Small Row Third Image
-              </h2>
-              <UploadImage
-                img={smThirdImg}
-                name={"smThirdImg"}
-                setImg={setSmThirdImg}
-              />
-            </div>
-            <div>
-              <h2 className="text-white font-semibold  mb-1">
-                Small Row Forth Image
-              </h2>
-              <UploadImage
-                img={smForthImg}
-                name={"smForthImg"}
-                setImg={setSmForthImg}
-              />
-            </div>
-            <div>
-              <h2 className="text-white font-semibold  mb-1">
-                {" "}
-                Big Row First Image
-              </h2>
-              <UploadImage
-                img={bigFirstImg}
-                name={"bigFirstImg"}
-                setImg={setBigFirstImg}
-              />
-            </div>
-            <div>
-              <h2 className="text-white font-semibold  mb-1">
-                Big Row Secant Image
-              </h2>
-              <UploadImage
-                img={bigSecantImg}
-                name={"bigSecantImg"}
-                setImg={setBigSecantImg}
-              />
-            </div>
-            <div>
-              <h2 className="text-white font-semibold  mb-1">
-                Big Row Third Image
-              </h2>
-              <UploadImage
-                img={bigThirdImg}
-                name={"bigThirdImg"}
-                setImg={setBigThirdImg}
-              />
-            </div>
-            <div>
-              <h2 className="text-white font-semibold  mb-1">
-                Big Row Forth Image
-              </h2>
-              <UploadImage
-                img={bigForthImg}
-                name={"bigForthImg"}
-                setImg={setBigForthImg}
+                img={roadMapImgTwo}
+                name={"roadMapImgTwo"}
+                setImg={setRoadMapImgTwo}
               />
             </div>
           </div>

@@ -9,7 +9,7 @@ const UploadImage = ({ setImg, name, img }) => {
     try {
       // Send the image to ImgBB
       const response = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${process.env.IMAGE_BB}`,
+        `https://api.imgbb.com/1/upload?key=9fa3cb8e4f8295683436ab614de928c1`,
         formData,
         {
           headers: {
