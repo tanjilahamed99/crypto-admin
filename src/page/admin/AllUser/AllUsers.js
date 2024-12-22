@@ -112,8 +112,6 @@ const AllUsers = () => {
     setFilterText(e.target.value);
   };
 
-  // console.log(allUsersData);
-
   useEffect(() => {
     if (filterText.trim().length > 0) {
       // Filter users based on name (case-insensitive)
@@ -138,7 +136,7 @@ const AllUsers = () => {
         All Users Information
       </h2>
 
-      <label className="input input-bordered flex items-center gap-2 mb-2 w-[30%] mx-auto">
+      <label className="input input-bordered flex items-center gap-2 mb-2 w-[50%] lg:w-[30%] mx-auto">
         <input
           onChange={handleFilter}
           type="text"

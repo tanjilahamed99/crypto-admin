@@ -8,7 +8,7 @@ import { RxCross1 } from "react-icons/rx";
 import Swal from "sweetalert2";
 import { MdDeleteForever } from "react-icons/md";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import Link from "next/link";
 import SendLotteryPayment from "./SendLotteryPayment";
@@ -20,6 +20,8 @@ const AllLottery = () => {
   const [lotteryImg, setLotteryImg] = useState("");
   const [winners, setWinners] = useState([]);
   const [defaultId, setDefaultId] = useState("");
+  const [status, setStatus] = useState("");
+  const [allLotteryData, setAllLotteryData] = useState([]);
 
   const handleCreateLottery = async (e) => {
     e.preventDefault();
@@ -203,6 +205,31 @@ const AllLottery = () => {
     setDefaultId(id);
   };
 
+  const handleStatus = (e) => {
+    setStatus(e.target.value);
+  };
+  useEffect(() => {
+    if (status === "All") {
+      setAllLotteryData([...allLottery?.lottery]);
+    } else if (status === "Completed") {
+      const filter = allLottery?.lottery?.filter(
+        (item) => item?.winners?.length > 0
+      );
+      setAllLotteryData([...filter]);
+    } else if (status === "Running") {
+      const filter = allLottery?.lottery?.filter(
+        (item) => item?.winners?.length <= 0
+      );
+      setAllLotteryData([...filter]);
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (allLottery?.lottery?.length > 0) {
+      setAllLotteryData([...allLottery?.lottery]);
+    }
+  }, [allLottery]);
+
   return (
     <div>
       <div className="flex justify-between items-center px-2">
@@ -213,6 +240,17 @@ const AllLottery = () => {
         >
           Add Lottery
         </button>
+      </div>
+
+      <div className="flex justify-end pr-2">
+        <select onChange={handleStatus} className="select select-bordered">
+          <option disabled selected>
+            Status
+          </option>
+          <option>All</option>
+          <option>Completed</option>
+          <option>Running</option>
+        </select>
       </div>
 
       {/* confirm lottery list */}
@@ -396,7 +434,9 @@ const AllLottery = () => {
                             id={defaultId}
                             refetchAll={refetch}
                             winnerData={item}
-                            price={String(item?.reward?.toString().slice(0, 10))}
+                            price={String(
+                              item?.reward?.toString().slice(0, 10)
+                            )}
                           />
                         </th>
                       </tr>
@@ -426,7 +466,7 @@ const AllLottery = () => {
             </tr>
           </thead>
           <tbody>
-            {allLottery?.lottery?.map((item, idx) => (
+            {allLotteryData.map((item, idx) => (
               <tr className="text-white mx-auto" key={idx}>
                 <th className="whitespace-nowrap">
                   <Image
