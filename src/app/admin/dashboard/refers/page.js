@@ -16,8 +16,9 @@ const Refers = () => {
 
   return (
     <div>
-      <RegistrationFunction />
-      <h2 className="text-white text-2xl font-bold my-5">Royalty Salary</h2>
+      <h2 className="text-white text-2xl font-bold my-5">
+        Manage Refers Payment
+      </h2>
 
       <div className="overflow-x-auto">
         <table className="table">

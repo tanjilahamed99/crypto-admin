@@ -4,6 +4,7 @@ import useGetAllUsers from "@/hooks/useGetAllUsers/useGetAllUsers";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { MdBlock } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import Swal from "sweetalert2";
@@ -14,6 +15,8 @@ const AllUsers = () => {
     adminEmail: user?.user?.email,
     wallet: user?.user?.wallet,
   });
+  const [filterText, setFilterText] = useState("");
+  const [allUsersData, setAlUsersData] = useState([]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -105,12 +108,56 @@ const AllUsers = () => {
     });
   };
 
+  const handleFilter = (e) => {
+    setFilterText(e.target.value);
+  };
+
+  // console.log(allUsersData);
+
+  useEffect(() => {
+    if (filterText.trim().length > 0) {
+      // Filter users based on name (case-insensitive)
+      const filtered = allUsers.filter((user) =>
+        user?.username?.toLowerCase()?.includes(filterText?.toLowerCase())
+      );
+      setAlUsersData(filtered);
+    }else{
+      setAlUsersData(allUsers);
+    }
+  }, [filterText]);
+
+  useEffect(() => {
+    if (allUsers?.length > 0) {
+      setAlUsersData(allUsers);
+    }
+  }, [allUsers]);
+
   return (
     <div>
       <h2 className="text-white text-2xl font-bold my-5">
         All Users Information
       </h2>
 
+      <label className="input input-bordered flex items-center gap-2 mb-2 w-[30%] mx-auto">
+        <input
+          onChange={handleFilter}
+          type="text"
+          className="grow"
+          placeholder="Search"
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          className="h-4 w-4 opacity-70"
+        >
+          <path
+            fillRule="evenodd"
+            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </label>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -126,7 +173,7 @@ const AllUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {allUsers?.map((item, idx) => (
+            {allUsersData?.map((item, idx) => (
               <tr className="text-white mx-auto" key={idx}>
                 <th className="whitespace-nowrap">{item?.username}</th>
                 <th className="whitespace-nowrap">{item?.email}</th>
