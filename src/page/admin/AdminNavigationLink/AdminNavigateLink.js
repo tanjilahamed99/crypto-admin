@@ -22,6 +22,7 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { PiTrademarkRegisteredLight } from "react-icons/pi";
 import { VscReferences } from "react-icons/vsc";
+import { MdOutlinePolicy } from "react-icons/md";
 
 const AdminNavigateLink = () => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -137,6 +138,14 @@ const AdminNavigateLink = () => {
               className="flex items-center text-md font-semibold gap-3"
             >
               <FaGift className="text-2xl" /> Lottery Images
+            </Link>
+          </li>
+          <li className="border border-gray-600  rounded-md hover:bg-gray-800 p-2">
+            <Link
+              href={"/admin/dashboard/privacyPolicy "}
+              className="flex items-center text-md font-semibold gap-3"
+            >
+              <MdOutlinePolicy className="text-2xl" /> Privacy Policy
             </Link>
           </li>
         </ul>

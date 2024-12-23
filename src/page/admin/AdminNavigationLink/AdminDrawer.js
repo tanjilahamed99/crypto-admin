@@ -11,7 +11,7 @@ import {
 import { RxCross2 } from "react-icons/rx";
 import { IoHomeOutline } from "react-icons/io5";
 import "./admindrawer.css";
-import { MdOutlineManageAccounts, MdQuestionAnswer } from "react-icons/md";
+import { MdOutlineManageAccounts, MdOutlinePolicy, MdQuestionAnswer } from "react-icons/md";
 import { GrGamepad } from "react-icons/gr";
 import { MdOutlineMedicalInformation } from "react-icons/md";
 import { SlMenu } from "react-icons/sl";
@@ -156,6 +156,14 @@ const AdminDrawer = () => {
               className="flex items-center text-md font-semibold gap-3"
             >
               <FaGift className="text-2xl" /> Lottery Images
+            </Link>
+          </li>
+          <li className="border border-gray-600  rounded-md hover:bg-gray-800 p-2">
+            <Link
+              href={"/admin/dashboard/privacyPolicy "}
+              className="flex items-center text-md font-semibold gap-3"
+            >
+              <MdOutlinePolicy className="text-2xl" /> Privacy Policy
             </Link>
           </li>
         </ul>

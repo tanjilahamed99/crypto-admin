@@ -78,7 +78,7 @@ const RegisterInfo = () => {
               />
             </div>
             <div>
-              <h2 className="text-white font-semibold  mb-1">Refers Reward</h2>
+              <h2 className="text-white font-semibold  mb-1">Refers Reward Percentage</h2>
               <input
                 type="text"
                 placeholder="Type here"
