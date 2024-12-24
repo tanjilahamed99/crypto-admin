@@ -10,7 +10,15 @@ import Swal from "sweetalert2";
 import { ethers } from "ethers";
 import useGetAllUsers from "@/hooks/useGetAllUsers/useGetAllUsers";
 
-const SendDownLinePayment = ({ userId, wallet, validate, totalPay, given }) => {
+const SendDownLinePayment = ({
+  userId,
+  wallet,
+  validate,
+  totalPay,
+  given,
+  totalPayment: UpLinePayment,
+  members,
+}) => {
   const address = useAddress(); // Get user's wallet address
   const signer = useSigner(); // Get signer to send transactions
   const { data: user } = useSession();
@@ -62,6 +70,8 @@ const SendDownLinePayment = ({ userId, wallet, validate, totalPay, given }) => {
             downLineMembers: downLine,
             totalDownLinePayment:
               parseFloat(totalPay) + parseFloat(totalPayment),
+            totalPayment: UpLinePayment,
+            members,
           },
         };
         const { data: updateRefersInfo } = await axios.put(

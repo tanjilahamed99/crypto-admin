@@ -9,7 +9,15 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { ethers } from "ethers";
 
-const SendRefersPayment = ({ userId, wallet, validate, totalPay, given }) => {
+const SendRefersPayment = ({
+  userId,
+  wallet,
+  validate,
+  totalPay,
+  given,
+  downLineMembers,
+  totalDownLinePayment,
+}) => {
   const address = useAddress(); // Get user's wallet address
   const signer = useSigner(); // Get signer to send transactions
   const { data: user } = useSession();
@@ -22,50 +30,95 @@ const SendRefersPayment = ({ userId, wallet, validate, totalPay, given }) => {
       alert("Connect your wallet first!");
       return;
     }
-    const { data } = await axios(`${BASE_URL}/myRefers/${userId}`);
-    if (data?.result?.length <= 0) {
-      alert("Need Refers For Reward");
-      return;
-    }
-    if (data?.result?.length === given) {
-      alert("Already given this reword");
-      return;
-    }
-
-    setIsLoading(true);
-    const fee = parseFloat(websiteData?.register?.fee); // Fee per user
-    const percentage = parseFloat(websiteData?.register?.referReward); // Admin percentage
-    // Calculate payment per user
-    const userPayment = fee + (fee * percentage) / 100;
-    // Calculate total payment for multiple users
-
-    let fixedUsers = 0;
-    if (given > 0) {
-      fixedUsers = parseFloat(data?.result?.length) - parseFloat(given);
-    } else {
-      fixedUsers = parseFloat(data?.result?.length);
-    }
-    const totalPayment = String(fixedUsers * userPayment);
 
     try {
-      // ETH Payment
+      const { data } = await axios(`${BASE_URL}/myRefers/${userId}`);
+      if (data?.result?.length <= 0) {
+        alert("Need Refers For Reward");
+        return;
+      }
+
+      if (data?.result?.length === given || data?.result?.length < given) {
+        alert("Already given this reward");
+        return;
+      }
+
+      const fee = parseFloat(websiteData?.register?.fee); // Fee per user
+      const first =
+        parseFloat(websiteData?.register?.levelOneReferReward) || 20;
+      const second =
+        parseFloat(websiteData?.register?.levelTwoReferReward) || 15;
+      const third =
+        parseFloat(websiteData?.register?.levelThreeReferReward) || 10;
+
+      let fixedUsers = 0;
+      if (given > 0) {
+        fixedUsers = parseFloat(data?.result?.length) - parseFloat(given);
+      } else {
+        fixedUsers = parseFloat(data?.result?.length);
+      }
+      // Tiered structure for referral rewards using dynamic rates
+      const tiers = [
+        { max: 399, rate: first },
+        { max: 599, rate: second },
+        { max: 1000, rate: third },
+      ];
+
+      let totalReward = 0;
+      let remainingUsers = fixedUsers;
+      let currentGiven = given;
+
+      // Calculate rewards tier-wise
+      for (const tier of tiers) {
+        const maxUsersInTier = Math.min(
+          remainingUsers,
+          tier.max - currentGiven
+        );
+
+        if (maxUsersInTier > 0) {
+          totalReward += maxUsersInTier * fee * (tier.rate / 100);
+          remainingUsers -= maxUsersInTier;
+          currentGiven += maxUsersInTier;
+        }
+
+        if (remainingUsers <= 0) break; // Stop if all users are processed
+      }
+
+      if (totalReward <= 0) {
+        alert("No reward calculated. Check the inputs.");
+        return;
+      }
+
+      // Payment Logic
+      const totalPayment = String(totalReward);
+
+      setIsLoading(true);
+      console.log(totalPay);
+
+      // Uncomment to enable ETH payment
       const tx = await signer.sendTransaction({
         to: wallet,
-        value: ethers.utils.parseEther(String(totalPayment?.slice(0, 10))),
+        value: ethers.utils.parseEther(totalPayment.slice(0, 10)),
       });
       await tx.wait();
+
       if (tx) {
         const updateData = {
           refersReword: {
+            totalPayment: parseFloat(totalPayment) + parseFloat(totalPay),
             members: parseFloat(given) + fixedUsers,
-            totalPayment: parseFloat(totalPay) + totalPayment,
+            downLineMembers,
+            totalDownLinePayment,
           },
         };
+
+        console.log(updateData);
 
         const { data: updateRefersInfo } = await axios.put(
           `${BASE_URL}/updateUserInfo/${userId}/${wallet}`,
           updateData
         );
+
         // history for dashboard
         let history = [];
         if (websiteData?.totalWithdrawal?.length > 0) {
@@ -105,11 +158,12 @@ const SendRefersPayment = ({ userId, wallet, validate, totalPay, given }) => {
             text: "Payment Completed",
             icon: "success",
           });
+          setIsLoading(false);
           validate();
         }
       }
     } catch (error) {
-      console.error("Transaction failed:", error);
+      console.error("Error in handleSendPayment:", error);
       alert("Transaction failed: " + error.message);
     } finally {
       setIsLoading(false);
@@ -122,7 +176,7 @@ const SendRefersPayment = ({ userId, wallet, validate, totalPay, given }) => {
         className="font-semibold text-sm bg-primary text-white rounded-xl px-3 py-1 hover:bg-green-700"
         onClick={handleSendPayment}
       >
-        Send
+        Send UpLine Payment
       </button>
       {/* Loading Modal */}
       {isLoading && (

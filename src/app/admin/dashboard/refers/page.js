@@ -57,19 +57,27 @@ const Refers = () => {
                   <DownLine id={item?._id} />
                 </th>
                 <th className="whitespace-nowrap">
-                  {item?.refersReword?.totalPayment || 0}
+                  {String(item?.refersReword?.totalPayment || 0).slice(0, 10)}
                 </th>
                 <th className="whitespace-nowrap">
-                  {item?.refersReword?.totalDownLinePayment || 0}
+                  {String(item?.refersReword?.totalDownLinePayment || 0).slice(
+                    0,
+                    10
+                  )}
                 </th>
+
                 <th className="whitespace-nowrap">
                   {" "}
                   <SendRefersPayment
                     userId={item?._id}
                     wallet={item?.wallet}
-                    given={item?.refersReword?.members}
-                    totalPay={item?.refersReword?.totalPayment}
+                    given={item?.refersReword?.members || 0}
+                    totalPay={item?.refersReword?.totalPayment || 0}
                     validate={refetch}
+                    downLineMembers={item?.refersReword?.downLineMembers || 0}
+                    totalDownLinePayment={
+                      item?.refersReword?.totalDownLinePayment || 0
+                    }
                   />
                 </th>
                 <th className="whitespace-nowrap">
@@ -79,6 +87,8 @@ const Refers = () => {
                     given={item?.refersReword?.downLineMembers}
                     totalPay={item?.refersReword?.totalDownLinePayment || 0}
                     validate={refetch}
+                    members={item?.refersReword?.members}
+                    totalPayment={item?.refersReword?.totalPayment}
                   />
                 </th>
               </tr>
