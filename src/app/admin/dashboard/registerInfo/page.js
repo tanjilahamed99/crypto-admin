@@ -17,7 +17,10 @@ const RegisterInfo = () => {
     const form = e.target;
     const fee = form.fee.value;
     const wallet = form.wallet.value;
-    const referReward = form.referReward.value;
+    const levelOneReferReward = form.levelOneReferReward.value;
+    const levelTwoReferReward = form.levelTwoReferReward.value;
+    const levelThreeReferReward = form.levelThreeReferReward.value;
+    const downLineReword = form.downLineReword.value;
     const role1 = form.role1.value;
     const role2 = form.role2.value;
     const role3 = form.role3.value;
@@ -30,7 +33,10 @@ const RegisterInfo = () => {
         ruleTwo: role2,
         ruleThree: role3,
         ruleFour: role4,
-        referReward,
+        downLineReword,
+        levelOneReferReward,
+        levelTwoReferReward,
+        levelThreeReferReward,
       },
     };
     const url = `${BASE_URL}/admin/faq/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/others`;
@@ -78,13 +84,51 @@ const RegisterInfo = () => {
               />
             </div>
             <div>
-              <h2 className="text-white font-semibold  mb-1">Refers Reward Percentage</h2>
+              <h2 className="text-white font-semibold  mb-1">
+                Refers 1-3 Level
+              </h2>
               <input
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full bg-white text-black"
-                name="referReward"
-                defaultValue={websiteData?.register?.referReward}
+                name="levelOneReferReward"
+                defaultValue={websiteData?.register?.levelOneReferReward}
+              />
+            </div>
+            <div>
+              <h2 className="text-white font-semibold  mb-1">
+                Refers 4-6 Level
+              </h2>
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full bg-white text-black"
+                name="levelTwoReferReward"
+                defaultValue={websiteData?.register?.levelTwoReferReward}
+              />
+            </div>
+            <div>
+              <h2 className="text-white font-semibold  mb-1">
+                Refers 6-10 Level
+              </h2>
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full bg-white text-black"
+                name="levelThreeReferReward"
+                defaultValue={websiteData?.register?.levelThreeReferReward}
+              />
+            </div>
+            <div>
+              <h2 className="text-white font-semibold  mb-1">
+                Down Line Reward
+              </h2>
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full bg-white text-black"
+                name="downLineReword"
+                defaultValue={websiteData?.register?.downLineReword}
               />
             </div>
           </div>
