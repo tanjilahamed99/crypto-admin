@@ -17,6 +17,7 @@ const SendRefersPayment = ({
   given,
   downLineMembers,
   totalDownLinePayment,
+  referStatus,
 }) => {
   const address = useAddress(); // Get user's wallet address
   const signer = useSigner(); // Get signer to send transactions
@@ -28,6 +29,11 @@ const SendRefersPayment = ({
   const handleSendPayment = async () => {
     if (!address || !signer) {
       alert("Connect your wallet first!");
+      return;
+    }
+
+    if (!referStatus) {
+      alert("Refer Functions Disable");
       return;
     }
 

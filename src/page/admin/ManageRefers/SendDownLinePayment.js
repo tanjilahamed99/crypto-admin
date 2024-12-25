@@ -18,6 +18,7 @@ const SendDownLinePayment = ({
   given,
   totalPayment: UpLinePayment,
   members,
+  referStatus
 }) => {
   const address = useAddress(); // Get user's wallet address
   const signer = useSigner(); // Get signer to send transactions
@@ -33,6 +34,12 @@ const SendDownLinePayment = ({
       alert("Connect your wallet first!");
       return;
     }
+
+    if (!referStatus) {
+      alert("Refer Functions Disable");
+      return;
+    }
+
     if (downLine <= 0) {
       alert("Need Down Line Refers");
       return;

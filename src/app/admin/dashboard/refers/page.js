@@ -2,11 +2,14 @@
 import DownLine from "@/components/DownLine/DownLine";
 import RegistrationFunction from "@/components/RegistationFunction";
 import UpLine from "@/components/UpLine/UpLine";
+import { BASE_URL } from "@/constant/constant";
 import useGetAllUsers from "@/hooks/useGetAllUsers/useGetAllUsers";
 import SendDownLinePayment from "@/page/admin/ManageRefers/SendDownLinePayment";
 import SendRefersPayment from "@/page/admin/ManageRefers/SendRefersPayment";
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import React from "react";
+import Swal from "sweetalert2";
 
 const Refers = () => {
   const { data: user } = useSession() || {};
@@ -16,10 +19,75 @@ const Refers = () => {
     wallet: user?.user?.wallet,
   });
 
+  console.log(allUsers);
+
+  const handleReferOff = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to Off refer",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Block it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await axios.put(
+            `${BASE_URL}/admin/blockUser/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/${id}`,
+            { referStatus: false }
+          );
+          console.log(data);
+          if (data?.status) {
+            refetch();
+            Swal.fire({
+              title: "Success",
+              text: "User refer Blocked Completed.",
+              icon: "success",
+            });
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    });
+  };
+
+  const handleReferOn = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to un block him",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Un Block",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await axios.put(
+            `${BASE_URL}/admin/blockUser/${user?.user?._id}/${user?.user?.email}/${user?.user?.wallet}/${id}`,
+            { referStatus: true }
+          );
+          console.log(data);
+          if (data?.status) {
+            refetch();
+            Swal.fire({
+              title: "Success",
+              text: "User Blocked Completed.",
+              icon: "success",
+            });
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    });
+  };
+
   return (
     <div>
       <RegistrationFunction />
-
       <h2 className="text-white text-2xl font-bold my-5">
         Manage Refers Payment
       </h2>
@@ -38,6 +106,7 @@ const Refers = () => {
               <th className="whitespace-nowrap">Down Line Total Reward</th>
               <th className="whitespace-nowrap">Send UpLine Payment</th>
               <th className="whitespace-nowrap">Send DownLine Payment</th>
+              <th className="whitespace-nowrap">Off Refer Cometion</th>
             </tr>
           </thead>
           <tbody>
@@ -78,6 +147,7 @@ const Refers = () => {
                     totalDownLinePayment={
                       item?.refersReword?.totalDownLinePayment || 0
                     }
+                    referStatus={item?.referStatus}
                   />
                 </th>
                 <th className="whitespace-nowrap">
@@ -89,7 +159,29 @@ const Refers = () => {
                     validate={refetch}
                     members={item?.refersReword?.members}
                     totalPayment={item?.refersReword?.totalPayment}
+                    referStatus={item?.referStatus}
                   />
+                </th>
+                <th className="whitespace-nowrap">
+                  {item?.referStatus ? (
+                    <>
+                      <button
+                        onClick={() => handleReferOff(item?._id)}
+                        className="bg-red-500 hover:bg-red-700 px-5 py-1 rounded-md "
+                      >
+                        Disable
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => handleReferOn(item?._id)}
+                        className="bg-green-500 hover:bg-green-700 px-5 py-1 rounded-md "
+                      >
+                        Enable
+                      </button>
+                    </>
+                  )}
                 </th>
               </tr>
             ))}
