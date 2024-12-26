@@ -3,7 +3,7 @@
 import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-import { Sepolia } from "@thirdweb-dev/chains";
+import { Sepolia, Binance } from "@thirdweb-dev/chains";
 import { SessionProvider } from "next-auth/react";
 export default function ThirdwebProviderV4({ children }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -16,7 +16,7 @@ export default function ThirdwebProviderV4({ children }) {
           "Wa2LoaKZ5D6uq1xUt_qw5yOY3DXP4Pdd7h5g9KsiKPhXXVegJnpYiNe0x6Y_hhRcFmqszWwidhBDfhgOZaFuew"
         }
         autoConnect={false}
-        activeChain={Sepolia}
+        activeChain={Binance}
       >
         <SessionProvider>{children}</SessionProvider>
       </ThirdwebProvider>
