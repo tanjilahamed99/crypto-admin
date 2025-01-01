@@ -45,7 +45,7 @@ const SaveFaq = ({ refetch, setIsOpen, faqData }) => {
           required
         />
       </div>
-
+{/*  */}
       <button
         type="submit"
         className="btn-outline btn text-md font-semibold h-10 w-28  rounded-lg text-white"
