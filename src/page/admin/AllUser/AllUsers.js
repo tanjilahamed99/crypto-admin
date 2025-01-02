@@ -119,10 +119,10 @@ const AllUsers = () => {
         user?.username?.toLowerCase()?.includes(filterText?.toLowerCase())
       );
       setAlUsersData(filtered);
-    }else{
+    } else {
       setAlUsersData(allUsers);
     }
-  }, [filterText]);
+  }, [filterText, allUsers]);
 
   useEffect(() => {
     if (allUsers?.length > 0) {
@@ -142,7 +142,6 @@ const AllUsers = () => {
           type="text"
           className="grow text-black bg-white"
           placeholder="Search"
-          
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"

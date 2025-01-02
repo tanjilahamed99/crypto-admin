@@ -82,7 +82,7 @@ const AdminDashBoard = () => {
       );
       setTodayWithdrawal(todayDeposit);
     }
-  }, [dashboardData]);
+  }, [dashboardData, today]);
 
   return (
     <div>
@@ -124,7 +124,7 @@ const AdminDashBoard = () => {
             <div className="">
               <h2 className="font-bold text-2xl flex items-center gap-1">
                 <BsCurrencyDollar />
-                {(todayDeposit.toString().slice(0, 7)) || "0.00"}
+                {todayDeposit.toString().slice(0, 7) || "0.00"}
               </h2>
               <h2 className="font-bold">Today deposit</h2>
             </div>
@@ -137,7 +137,7 @@ const AdminDashBoard = () => {
             <div className="">
               <h2 className="font-bold text-2xl flex items-center gap-1">
                 <BsCurrencyDollar />
-                {(todayWithdrawal.toString().slice(0, 7)) || "0.00"}
+                {todayWithdrawal.toString().slice(0, 7) || "0.00"}
               </h2>
               <h2 className="font-bold">Today Withdrawal</h2>
             </div>
@@ -150,7 +150,7 @@ const AdminDashBoard = () => {
             <div className="">
               <h2 className="font-bold text-2xl flex items-center gap-1">
                 <BsCurrencyDollar />
-                {(totalDeposit.toString().slice(0, 7)) || "0.00"}
+                {totalDeposit.toString().slice(0, 7) || "0.00"}
               </h2>
               <h2 className="font-bold">Total deposit</h2>
             </div>
@@ -163,7 +163,7 @@ const AdminDashBoard = () => {
             <div className="">
               <h2 className="font-bold text-2xl flex items-center gap-1">
                 <BsCurrencyDollar />
-                {(totalWithdrawal.toString().slice(0, 7)) || "0.00"}
+                {totalWithdrawal.toString().slice(0, 7) || "0.00"}
               </h2>
               <h2 className="font-bold">Total Withdrawal</h2>
             </div>

@@ -32,7 +32,7 @@ const AdminRoyaltySalary = () => {
     } else {
       setAlUsersData(allUsers);
     }
-  }, [filterText]);
+  }, [filterText, allUsers]);
 
   useEffect(() => {
     if (allUsers?.length > 0) {

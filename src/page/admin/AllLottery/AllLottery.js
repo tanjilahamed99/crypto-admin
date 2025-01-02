@@ -222,7 +222,7 @@ const AllLottery = () => {
       );
       setAllLotteryData([...filter]);
     }
-  }, [status]);
+  }, [status,allLottery?.lottery]);
 
   useEffect(() => {
     if (allLottery?.lottery?.length > 0) {
